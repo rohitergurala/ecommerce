@@ -1,0 +1,14 @@
+version: '2'
+services:
+    mybanking-app:
+        image: mybanking
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://mybanking-postgresql:5432/mybanking
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    mybanking-postgresql:
+        extends:
+            file: postgresql.yml
+            service: mybanking-postgresql
