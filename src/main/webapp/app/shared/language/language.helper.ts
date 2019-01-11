@@ -1,14 +1,23 @@
-import { Injectable } from '@angular/core';
-import { Title }     from '@angular/platform-browser';
+import { Injectable, RendererFactory2, Renderer2 } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRouteSnapshot } from '@angular/router';
-import { TranslateService, TranslationChangeEvent, LangChangeEvent } from 'ng2-translate/ng2-translate';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 import { LANGUAGES } from './language.constants';
+import { FindLanguageFromKeyPipe } from './find-language-from-key.pipe';
 
 @Injectable()
 export class JhiLanguageHelper {
+    renderer: Renderer2 = null;
 
-    constructor (private translateService: TranslateService, private titleService: Title, private router: Router) {
+    constructor(
+        private translateService: TranslateService,
+        private rootRenderer: RendererFactory2,
+        private findLanguageFromKeyPipe: FindLanguageFromKeyPipe,
+        private titleService: Title,
+        private router: Router
+    ) {
+        this.renderer = rootRenderer.createRenderer(document.querySelector('html'), null);
         this.init();
     }
 
@@ -28,26 +37,28 @@ export class JhiLanguageHelper {
              titleKey = this.getPageTitle(this.router.routerState.snapshot.root);
         }
 
-        this.translateService.get(titleKey).subscribe(title => {
+        this.translateService.get(titleKey).subscribe((title) => {
             this.titleService.setTitle(title);
         });
     }
 
-    private init () {
-        this.translateService.onTranslationChange.subscribe((event: TranslationChangeEvent) => {
-            this.updateTitle();
-        });
-
+    private init() {
         this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+            this.renderer.setAttribute(document.querySelector('html'), 'lang', this.translateService.currentLang);
             this.updateTitle();
+            this.updatePageDirection();
         });
     }
 
     private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
-        let title: string = (routeSnapshot.data && routeSnapshot.data['pageTitle']) ? routeSnapshot.data['pageTitle'] : 'mybankingApp';
+        let title: string = (routeSnapshot.data && routeSnapshot.data['pageTitle']) ? routeSnapshot.data['pageTitle'] : 'eCommerceApp';
         if (routeSnapshot.firstChild) {
             title = this.getPageTitle(routeSnapshot.firstChild) || title;
         }
         return title;
+    }
+
+    private updatePageDirection() {
+        this.renderer.setAttribute(document.querySelector('html'), 'dir', this.findLanguageFromKeyPipe.isRTL(this.translateService.currentLang) ? 'rtl' : 'ltr');
     }
 }

@@ -10,15 +10,15 @@ public final class HeaderUtil {
 
     private static final Logger log = LoggerFactory.getLogger(HeaderUtil.class);
 
-    private static final String APPLICATION_NAME = "mybankingApp";
+    private static final String APPLICATION_NAME = "eCommerceApp";
 
     private HeaderUtil() {
     }
 
     public static HttpHeaders createAlert(String message, String param) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-mybankingApp-alert", message);
-        headers.add("X-mybankingApp-params", param);
+        headers.add("X-eCommerceApp-alert", message);
+        headers.add("X-eCommerceApp-params", param);
         return headers;
     }
 
@@ -35,10 +35,10 @@ public final class HeaderUtil {
     }
 
     public static HttpHeaders createFailureAlert(String entityName, String errorKey, String defaultMessage) {
-        log.error("Entity creation failed, {}", defaultMessage);
+        log.error("Entity processing failed, {}", defaultMessage);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-mybankingApp-error", "error." + errorKey);
-        headers.add("X-mybankingApp-params", entityName);
+        headers.add("X-eCommerceApp-error", "error." + errorKey);
+        headers.add("X-eCommerceApp-params", entityName);
         return headers;
     }
 }

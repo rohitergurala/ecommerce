@@ -4,8 +4,8 @@
       "packageName": "com.mycompany.myapp",
       "nativeLanguage": "en"
     },
-    "jhipsterVersion": "4.1.1",
-    "baseName": "mybanking",
+    "jhipsterVersion": "4.6.2",
+    "baseName": "ECommerce",
     "packageName": "com.mycompany.myapp",
     "packageFolder": "com/mycompany/myapp",
     "serverPort": "8080",
@@ -14,19 +14,21 @@
     "clusteredHttpSession": false,
     "websocket": false,
     "databaseType": "sql",
-    "devDatabaseType": "postgresql",
+    "devDatabaseType": "h2Memory",
     "prodDatabaseType": "postgresql",
     "searchEngine": false,
     "messageBroker": false,
     "serviceDiscoveryType": false,
     "buildTool": "gradle",
     "enableSocialSignIn": false,
-    "jwtSecretKey": "68d184b212a4cb21871fe7e59d9ec130a25284cd",
-    "clientFramework": "angular2",
+    "jwtSecretKey": "02bfe341bfc9f7944a78301f53a86ccd67048171",
+    "clientFramework": "angularX",
     "useSass": true,
-    "clientPackageManager": "npm",
+    "clientPackageManager": "yarn",
     "applicationType": "monolith",
     "testFrameworks": [
+      "gatling",
+      "cucumber",
       "protractor"
     ],
     "jhiPrefix": "jhi",
@@ -34,10 +36,8 @@
     "nativeLanguage": "en",
     "languages": [
       "en",
-      "ca",
-      "zh-tw",
-      "da",
-      "et"
+      "ar-ly",
+      "hy"
     ]
   }
 }

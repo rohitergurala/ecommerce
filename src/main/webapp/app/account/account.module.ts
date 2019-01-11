@@ -1,14 +1,14 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { MybankingSharedModule } from '../shared';
+import { ECommerceSharedModule } from '../shared';
 
 import {
     Register,
-    Activate,
-    Password,
-    PasswordResetInit,
-    PasswordResetFinish,
+    ActivateService,
+    PasswordService,
+    PasswordResetInitService,
+    PasswordResetFinishService,
     PasswordStrengthBarComponent,
     RegisterComponent,
     ActivateComponent,
@@ -21,7 +21,7 @@ import {
 
 @NgModule({
     imports: [
-        MybankingSharedModule,
+        ECommerceSharedModule,
         RouterModule.forRoot(accountState, { useHash: true })
     ],
     declarations: [
@@ -35,11 +35,11 @@ import {
     ],
     providers: [
         Register,
-        Activate,
-        Password,
-        PasswordResetInit,
-        PasswordResetFinish
+        ActivateService,
+        PasswordService,
+        PasswordResetInitService,
+        PasswordResetFinishService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class MybankingAccountModule {}
+export class ECommerceAccountModule {}

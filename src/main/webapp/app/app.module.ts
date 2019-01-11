@@ -4,18 +4,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ng2-webstorage';
 
-import { MybankingSharedModule, UserRouteAccessService } from './shared';
-import { MybankingHomeModule } from './home/home.module';
-import { MybankingAdminModule } from './admin/admin.module';
-import { MybankingAccountModule } from './account/account.module';
-import { MybankingEntityModule } from './entities/entity.module';
+import { ECommerceSharedModule, UserRouteAccessService } from './shared';
+import { ECommerceHomeModule } from './home/home.module';
+import { ECommerceAdminModule } from './admin/admin.module';
+import { ECommerceAccountModule } from './account/account.module';
+import { ECommerceEntityModule } from './entities/entity.module';
 
-import { LayoutRoutingModule } from './layouts';
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
+// jhipster-needle-angular-add-module-import JHipster will add new module here
+
 import {
     JhiMainComponent,
+    LayoutRoutingModule,
     NavbarComponent,
     FooterComponent,
     ProfileService,
@@ -24,17 +26,17 @@ import {
     ErrorComponent
 } from './layouts';
 
-
 @NgModule({
     imports: [
         BrowserModule,
         LayoutRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
-        MybankingSharedModule,
-        MybankingHomeModule,
-        MybankingAdminModule,
-        MybankingAccountModule,
-        MybankingEntityModule
+        ECommerceSharedModule,
+        ECommerceHomeModule,
+        ECommerceAdminModule,
+        ECommerceAccountModule,
+        ECommerceEntityModule,
+        // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
         JhiMainComponent,
@@ -46,12 +48,10 @@ import {
     ],
     providers: [
         ProfileService,
-        { provide: Window, useValue: window },
-        { provide: Document, useValue: document },
         customHttpProvider(),
         PaginationConfig,
         UserRouteAccessService
     ],
     bootstrap: [ JhiMainComponent ]
 })
-export class MybankingAppModule {}
+export class ECommerceAppModule {}

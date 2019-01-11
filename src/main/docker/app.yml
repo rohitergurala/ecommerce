@@ -1,14 +1,14 @@
 version: '2'
 services:
-    mybanking-app:
-        image: mybanking
+    ecommerce-app:
+        image: ecommerce
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
-            - SPRING_DATASOURCE_URL=jdbc:postgresql://mybanking-postgresql:5432/mybanking
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://ecommerce-postgresql:5432/ECommerce
             - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
         ports:
             - 8080:8080
-    mybanking-postgresql:
+    ecommerce-postgresql:
         extends:
             file: postgresql.yml
-            service: mybanking-postgresql
+            service: ecommerce-postgresql

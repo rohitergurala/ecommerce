@@ -1,12 +1,10 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
-import { CookieService } from 'angular2-cookie/services/cookies.service';
 import {
-    MybankingSharedLibsModule,
-    MybankingSharedCommonModule,
+    ECommerceSharedLibsModule,
+    ECommerceSharedCommonModule,
     CSRFService,
-    AuthService,
     AuthServerProvider,
     AccountService,
     UserService,
@@ -20,15 +18,14 @@ import {
 
 @NgModule({
     imports: [
-        MybankingSharedLibsModule,
-        MybankingSharedCommonModule
+        ECommerceSharedLibsModule,
+        ECommerceSharedCommonModule
     ],
     declarations: [
         JhiLoginModalComponent,
         HasAnyAuthorityDirective
     ],
     providers: [
-        CookieService,
         LoginService,
         LoginModalService,
         AccountService,
@@ -36,13 +33,12 @@ import {
         Principal,
         CSRFService,
         AuthServerProvider,
-        AuthService,
         UserService,
         DatePipe
     ],
     entryComponents: [JhiLoginModalComponent],
     exports: [
-        MybankingSharedCommonModule,
+        ECommerceSharedCommonModule,
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
         DatePipe
@@ -50,4 +46,4 @@ import {
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
-export class MybankingSharedModule {}
+export class ECommerceSharedModule {}

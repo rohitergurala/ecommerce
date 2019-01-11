@@ -1,4 +1,4 @@
-/* after changing this file run 'npm run webpack:build:vendor' or 'npm install' or 'npm run webpack:build' */
+/* after changing this file run 'yarn run 'yarn run webpack:build' */
 $fa-font-path: '~font-awesome/fonts';
 
 /***************************
@@ -7,4 +7,5 @@ eg $input-color: red;
 ****************************/
 
 @import 'node_modules/bootstrap/scss/bootstrap';
+@import 'src/main/webapp/content/scss/rtl.scss';
 @import 'node_modules/font-awesome/scss/font-awesome';

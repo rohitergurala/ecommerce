@@ -16,14 +16,14 @@
 
 spring:
     application:
-        name: mybanking
+        name: ECommerce
     jackson:
         serialization.write_dates_as_timestamps: false
     cache:
         type: none
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:mybanking;DB_CLOSE_DELAY=-1
+        url: jdbc:h2:mem:ECommerce;DB_CLOSE_DELAY=-1
         name:
         username:
         password:
@@ -75,14 +75,27 @@ jhipster:
         core-pool-size: 1
         max-pool-size: 50
         queue-capacity: 10000
+    # To test logstash appender
+    logging:
+        logstash:
+            enabled: true
+            host: localhost
+            port: 5000
+            queue-size: 512
+    mail:
+        from: test@localhost
+        base-url: http://127.0.0.1:8080
     security:
         authentication:
             jwt:
-                secret: 68d184b212a4cb21871fe7e59d9ec130a25284cd
+                secret: 02bfe341bfc9f7944a78301f53a86ccd67048171
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: true
+            report-frequency: 60 # in seconds
 
 # ===================================================================
 # Application specific properties

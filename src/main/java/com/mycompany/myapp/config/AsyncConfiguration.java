@@ -35,7 +35,7 @@ public class AsyncConfiguration implements AsyncConfigurer {
         executor.setCorePoolSize(jHipsterProperties.getAsync().getCorePoolSize());
         executor.setMaxPoolSize(jHipsterProperties.getAsync().getMaxPoolSize());
         executor.setQueueCapacity(jHipsterProperties.getAsync().getQueueCapacity());
-        executor.setThreadNamePrefix("mybanking-Executor-");
+        executor.setThreadNamePrefix("e-commerce-Executor-");
         return new ExceptionHandlingAsyncTaskExecutor(executor);
     }
 
